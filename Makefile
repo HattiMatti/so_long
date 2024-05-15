@@ -6,9 +6,20 @@
 #    By: msiitone <msiitone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 14:31:25 by msiitone          #+#    #+#              #
-#    Updated: 2024/05/15 18:13:42 by msiitone         ###   ########.fr        #
+#    Updated: 2024/05/15 18:25:25 by msiitone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+UNAME_S := $(shell uname -s)
+
+MLX_FLAGS := -lglfw
+
+ifeq ($(UNAME_S),Linux)
+    MLX_FLAGS += -ldl -pthread -lm
+endif
+ifeq ($(UNAME_S),Darwin)
+    MLX_FLAGS += -framework Cocoa -framework OpenGL -framework IOKit
+endif
 
 NAME = so_long
 
@@ -18,7 +29,7 @@ OBJ = $(SRCS:.c=.o)
 
 INCLUDES = ./includes/so_long.h 
 
-MLX42 = MLX42/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+MLX42 = MLX42/build/libmlx42.a -Iinclude $(MLX_FLAGS) -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 LIBFT = ./libft
 
