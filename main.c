@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./includes/so_long.h"
 
 int	main(void)
 {
-
+	return (0);
 }
