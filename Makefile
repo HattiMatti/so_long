@@ -6,7 +6,7 @@
 #    By: msiitone <msiitone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 14:31:25 by msiitone          #+#    #+#              #
-#    Updated: 2024/05/15 18:25:25 by msiitone         ###   ########.fr        #
+#    Updated: 2024/05/24 22:10:17 by msiitone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,28 +18,28 @@ ifeq ($(UNAME_S),Linux)
     MLX_FLAGS += -ldl -pthread -lm
 endif
 ifeq ($(UNAME_S),Darwin)
-    MLX_FLAGS += -framework Cocoa -framework OpenGL -framework IOKit
+    MLX_FLAGS += -L"/Users/$(USER)/.brew/opt/glfw/lib/" -framework Cocoa -framework OpenGL -framework IOKit
 endif
 
 NAME = so_long
 
-SRCS = main.c
+SRCS = srcs/main.c srcs/check_map.c
 
 OBJ = $(SRCS:.c=.o)
 
-INCLUDES = ./includes/so_long.h 
+INCLUDES = -I./includes -I./libft -I./MLX42/include
 
-MLX42 = MLX42/build/libmlx42.a -Iinclude $(MLX_FLAGS) -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+MLX42 = MLX42/build/libmlx42.a $(MLX_FLAGS)
 
 LIBFT = ./libft
 
 CFLAGS = -Wall -Wextra -Werror
 
-COMPILE = cc $(CFLAGS)
+COMPILE = cc $(CFLAGS) $(INCLUDES)
 
 all : $(NAME)
 
-$(OBJ): $(SRCS)
+%.o : %.c
 	$(COMPILE) -c $< -o $@
 	
 $(NAME) : $(OBJ)

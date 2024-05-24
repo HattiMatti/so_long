@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msiitone <msiitone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 14:33:25 by msiitone          #+#    #+#             */
-/*   Updated: 2024/05/22 16:37:52 by msiitone         ###   ########.fr       */
+/*   Created: 2024/05/22 18:24:58 by msiitone          #+#    #+#             */
+/*   Updated: 2024/05/24 23:49:52 by msiitone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-#include "../libft/libft.h"
-#include "../MLX42/include/MLX42/MLX42.h"
-#include <stdio.h>
+#include "../includes/so_long.h"
 
-typedef struct	s_struct {
-	int	i;
-}	t_struct;
+int	check_map(char *map_name)
+{
+	int		line_count;
+	int		fd;
+	char	*line;
 
-int	check_map(char *map_name);
-
-#endif
+	fd = open(map_name, O_RDONLY);
+	if (fd == -1)
+		exit(0);
+	line_count = 0;
+	line = get_next_line(fd);
+	ft_strlen(line);
+	while (line != NULL)
+	{
+		ft_printf("%s\n", line);
+		free(line);
+		line = get_next_line(fd);
+		line_count++;
+	}
+	close(fd);
+	return (0);
+}

@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msiitone <msiitone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 14:33:25 by msiitone          #+#    #+#             */
-/*   Updated: 2024/05/22 16:37:52 by msiitone         ###   ########.fr       */
+/*   Created: 2024/05/21 15:30:13 by msiitone          #+#    #+#             */
+/*   Updated: 2024/05/21 15:30:30 by msiitone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-#include "../libft/libft.h"
-#include "../MLX42/include/MLX42/MLX42.h"
-#include <stdio.h>
+#include "../includes/so_long.h"
 
-typedef struct	s_struct {
-	int	i;
-}	t_struct;
+int	main(int argc, char **argv)
+{
+	char	*map_name;
 
-int	check_map(char *map_name);
-
-#endif
+	if (argc != 2)
+	{
+		ft_putstr_fd("Error: Wrong number of arguments", 2);
+		return (0);
+	}
+	map_name = argv[1];
+	check_map(map_name);
+	return (0);
+}

@@ -6,22 +6,18 @@
 /*   By: msiitone <msiitone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:31:59 by msiitone          #+#    #+#             */
-/*   Updated: 2024/05/15 18:47:09 by msiitone         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:35:23 by msiitone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "./includes/so_long.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include "MLX42/include/MLX42/MLX42.h"
+#include "./includes/so_long.h"
 #define WIDTH 256
 #define HEIGHT 256
 
 // Exit the program as failure.
 static void ft_error(void)
 {
-	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
+	ft_putstr_fd((char *)mlx_strerror(mlx_errno), 2);
 	exit(EXIT_FAILURE);
 }
 
