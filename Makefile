@@ -23,7 +23,7 @@ endif
 
 NAME = so_long
 
-SRCS = srcs/main.c srcs/check_map.c
+SRCS = srcs/main.c srcs/check_map.c srcs/erfre.c
 
 OBJ = $(SRCS:.c=.o)
 
@@ -35,7 +35,7 @@ LIBFT = ./libft
 
 CFLAGS = -Wall -Wextra -Werror
 
-COMPILE = cc $(CFLAGS) $(INCLUDES)
+COMPILE = cc $(INCLUDES)
 
 all : $(NAME)
 

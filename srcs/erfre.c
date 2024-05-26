@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msiitone <msiitone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 15:30:13 by msiitone          #+#    #+#             */
-/*   Updated: 2024/05/21 15:30:30 by msiitone         ###   ########.fr       */
+/*   Created: 2024/05/26 16:28:48 by msiitone          #+#    #+#             */
+/*   Updated: 2024/05/26 16:34:22 by msiitone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	main(int argc, char **argv)
+void	erfre(t_struct *map, int flag)
 {
-	char		*map_name;
-	t_struct	map;
-
-	if (argc != 2)
-	{
-		ft_putstr_fd("Error: Wrong number of arguments\n", 2);
-		return (0);
-	}
-	map_name = argv[1];
-	check_map(map_name, &map);
-	return (0);
+	if (flag == 1)
+		ft_putstr_fd("error opening map", 2);
+	exit(EXIT_FAILURE);
 }
