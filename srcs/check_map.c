@@ -22,6 +22,10 @@ int	llen_match(char *line, int len)
 		return (-1);
 	}
 }
+int	check_name(char *map_name)
+{
+	
+}
 
 int	check_map(char *map_name, t_struct *map)
 {

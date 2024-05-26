@@ -24,5 +24,6 @@ int	main(int argc, char **argv)
 	}
 	map_name = argv[1];
 	check_map(map_name, &map);
+	ft_printf("width: %d height: %d\n", map.map_width, map.map_height);
 	return (0);
 }
