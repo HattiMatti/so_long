@@ -39,6 +39,19 @@ int	check_map_name(char *map_name)
 	}
 }
 
+int	check_walls(char *map_name, t_struct *map)
+{
+	int		fd;
+	char	*line;
+
+	fd = open(map_name, O_RDONLY);
+	if (fd == -1)
+		erfre(map, 1);
+	line = get_next_line(fd);
+	free(line);
+	return (0);
+}
+
 int	check_map(char *map_name, t_struct *map)
 {
 	int		fd;
@@ -48,7 +61,6 @@ int	check_map(char *map_name, t_struct *map)
 	if (fd == -1)
 		erfre(map, 1);
 	line = get_next_line(fd);
-	map->map_height = 0;
 	map->map_width = ft_strlen(line);
 	while (line != NULL)
 	{
