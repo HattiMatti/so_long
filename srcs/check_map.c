@@ -22,9 +22,21 @@ int	llen_match(char *line, int len)
 		return (-1);
 	}
 }
-int	check_name(char *map_name)
+
+int	check_map_name(char *map_name)
 {
-	
+	int		len;
+	char	ber[5];
+
+	ft_strlcpy(ber, ".ber", 5);
+	len = ft_strlen(map_name);
+	if (len > 4 && ft_strncmp(map_name + len - 4, ber, 4) == 0)
+		return (0);
+	else
+	{
+		ft_putstr_fd("Error: incorrect map name\n", 2);
+		exit(EXIT_FAILURE);
+	}
 }
 
 int	check_map(char *map_name, t_struct *map)

@@ -22,8 +22,10 @@ typedef struct s_struct
 	int	map_height;
 }	t_struct;
 
+int		check_map_name(char *map_name);
 int		check_map(char *map_name, t_struct *map);
 int		llen_match(char *line, int len);
 void	erfre(t_struct *map, int flag);
+
 
 #endif

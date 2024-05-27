@@ -15,6 +15,8 @@
 void	erfre(t_struct *map, int flag)
 {
 	if (flag == 1)
-		ft_putstr_fd("error opening map", 2);
+		ft_putstr_fd("error opening map\n", 2);
+	else if (map->map_height == 0)
+		ft_putstr_fd("Error: map not valid\n", 2);
 	exit(EXIT_FAILURE);
 }
