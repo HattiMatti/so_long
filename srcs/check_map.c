@@ -39,15 +39,38 @@ int	check_map_name(char *map_name)
 	}
 }
 
-int	check_walls(char *map_name, t_struct *map)
+int	check_walls(char *line, t_struct *map, int flag)
 {
+	int	i;
+
+	i = 0;
+	if (line[i] != '1')
+		return (1);
+	while (line != '\n' && flag == 1)
+	{
+		if (line[i] != '1')
+			erfre(map, 2);
+		i++;
+	}
+	return (0);
+}
+
+int	map_line_read(char *map_name, t_struct *map)
+{
+	int		i;
 	int		fd;
 	char	*line;
+
 
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 		erfre(map, 1);
 	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
 	free(line);
 	return (0);
 }
@@ -71,7 +94,6 @@ int	check_map(char *map_name, t_struct *map)
 			close(fd);
 			erfre(map, 0);
 		}
-		ft_printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
 		map->map_height++;
