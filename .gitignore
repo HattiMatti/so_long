@@ -2,3 +2,4 @@ MLX42
 *.o
 libft/libft.a
 so_long
+.DS_Store
