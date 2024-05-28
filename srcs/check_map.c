@@ -42,16 +42,21 @@ int	check_map_name(char *map_name)
 int	check_walls(char *line, t_struct *map, int flag)
 {
 	int	i;
+	int	len;
 
+	len = ft_strlen(line);
 	i = 0;
 	if (line[i] != '1')
 		return (1);
-	while (line != '\n' && flag == 1)
+	while (line[i] != '\n' && flag == 1)
 	{
 		if (line[i] != '1')
 			erfre(map, 2);
 		i++;
 	}
+	if (flag == 2)
+		if (line[0] != 1 || line[len - 2] != 1)
+			erfre(map, 2);
 	return (0);
 }
 
