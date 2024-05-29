@@ -71,10 +71,17 @@ int	map_line_read(char *map_name, t_struct *map)
 	if (fd == -1)
 		erfre(map, 1);
 	line = get_next_line(fd);
+	check_walls(line, map, 1);
+	i = 0;
 	while (line != NULL)
 	{
+		if (i == 0 || i == map->map_height - 1)
+			check_walls(line, map, 1);
+		else
+			check_walls(line, map, 2);
 		free(line);
 		line = get_next_line(fd);
+		i++;
 	}
 	free(line);
 	return (0);

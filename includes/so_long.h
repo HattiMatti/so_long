@@ -22,6 +22,7 @@ typedef struct s_struct
 	int	map_height;
 }	t_struct;
 
+int		check_walls(char *line, t_struct *map, int flag);
 int		map_line_read(char *map_name, t_struct *map);
 int		check_map_name(char *map_name);
 int		check_map(char *map_name, t_struct *map);
