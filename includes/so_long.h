@@ -18,8 +18,10 @@
 
 typedef struct s_struct
 {
-	int	map_width;
-	int	map_height;
+	int		map_width;
+	int		map_height;
+	int		lines;
+	char	**map;
 }	t_struct;
 
 int		check_walls(char *line, t_struct *map, int flag);
@@ -28,6 +30,7 @@ int		check_map_name(char *map_name);
 int		check_map(char *map_name, t_struct *map);
 int		llen_match(char *line, int len);
 void	erfre(t_struct *map, int flag);
+void	free_map(t_struct *map, int flag);
 
 
 
