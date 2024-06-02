@@ -23,7 +23,7 @@ endif
 
 NAME = so_long
 
-SRCS = srcs/main.c srcs/check_map.c srcs/erfre.c
+SRCS = srcs/main.c srcs/check_map.c srcs/erfre.c srcs/map_utils.c
 
 OBJ = $(SRCS:.c=.o)
 

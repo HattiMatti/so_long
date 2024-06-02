@@ -27,6 +27,7 @@ void	init_window(t_struct *map)
 	mlx_get_monitor_size(0, &scr_width, &scr_height);
 	if (scr_width < width || scr_height < height)
 		erfre(map, 4);
+	texture_to_img(map);
 	mlx_loop(map->mlx);
 }
 

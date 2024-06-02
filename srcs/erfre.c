@@ -23,7 +23,6 @@ void	free_map(t_struct *map, int flag)
 			map->lines = map->map_height;
 		while (map->map[i] != NULL && i < map->lines)
 		{
-			ft_printf("hereree\n");
 			free(map->map[i]);
 			i++;
 		}
@@ -43,7 +42,7 @@ void	erfre(t_struct *map, int flag)
 		ft_putstr_fd("Error: incorrect walls\n", 2);
 	else if (flag == 3)
 		ft_putstr_fd("Error: error allocating map\n", 2);
-	else if(flag == 4)
+	else if (flag == 4)
 		ft_putstr_fd("Error: MLX", 2);
 	exit(EXIT_FAILURE);
 }
