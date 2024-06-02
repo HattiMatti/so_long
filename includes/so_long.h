@@ -26,6 +26,10 @@ typedef struct s_struct
 	char			**map;
 	mlx_t			*mlx;
 	mlx_image_t		*floor_img;
+	mlx_image_t		*wall_img;
+	mlx_image_t		*player_img;
+	mlx_image_t		*collectible_img;
+	mlx_image_t		*exit_img;
 	mlx_texture_t	*floor_texture;
 	mlx_texture_t	*wall_texture;
 	mlx_texture_t	*player_texture;
@@ -41,7 +45,8 @@ int		llen_match(char *line, int len);
 void	erfre(t_struct *map, int flag);
 void	free_map(t_struct *map, int flag);
 void	texture_to_img(t_struct	*map);
-
-
+void	load_textures(t_struct *map);
+void	free_textures(t_struct *map);
+void	free_images(t_struct *map);
 
 #endif
