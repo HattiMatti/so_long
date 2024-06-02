@@ -12,6 +12,24 @@
 
 #include "../includes/so_long.h"
 
+void	init_window(t_struct *map)
+{
+	int	width;
+	int	height;
+	int	scr_width;
+	int	scr_height;
+
+	width = 50 * map->map_width;
+	height = 50 * map->map_height;
+	map->mlx = mlx_init(width, height, "so_long", false);
+	if (!map->mlx)
+		erfre(map, 4);
+	mlx_get_monitor_size(0, &scr_width, &scr_height);
+	if (scr_width < width || scr_height < height)
+		erfre(map, 4);
+	mlx_loop(map->mlx);
+}
+
 int	map_fuctions(char *map_name, t_struct *map)
 {
 	int	i;
@@ -45,6 +63,7 @@ int	main(int argc, char **argv)
 	map_name = argv[1];
 	map_fuctions(map_name, &map);
 	ft_printf("width: %d height: %d\n", map.map_width, map.map_height);
+	init_window(&map);
 	if (map.map != NULL)
 		free_map(&map, 2);
 	return (0);

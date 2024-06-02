@@ -21,7 +21,10 @@ typedef struct s_struct
 	int		map_width;
 	int		map_height;
 	int		lines;
+	int		x;
+	int		y;
 	char	**map;
+	mlx_t	*mlx;
 }	t_struct;
 
 int		check_walls(char *line, t_struct *map, int flag);

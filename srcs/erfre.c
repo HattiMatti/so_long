@@ -43,5 +43,7 @@ void	erfre(t_struct *map, int flag)
 		ft_putstr_fd("Error: incorrect walls\n", 2);
 	else if (flag == 3)
 		ft_putstr_fd("Error: error allocating map\n", 2);
+	else if(flag == 4)
+		ft_putstr_fd("Error: MLX", 2);
 	exit(EXIT_FAILURE);
 }
