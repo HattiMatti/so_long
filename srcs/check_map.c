@@ -18,7 +18,7 @@ int	llen_match(char *line, int len)
 		return (len);
 	else
 	{
-		ft_putstr_fd("Error: Map is not rectangle\n", 2);
+		ft_putstr_fd("Error\n Map is not rectangle\n", 2);
 		return (-1);
 	}
 }
@@ -34,7 +34,7 @@ int	check_map_name(char *map_name)
 		return (0);
 	else
 	{
-		ft_putstr_fd("Error: incorrect map name\n", 2);
+		ft_putstr_fd("Error\n incorrect map name\n", 2);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -49,13 +49,21 @@ int	check_walls(char *line, t_struct *map, int flag)
 	while (line[i] != '\n' && line[i] != '\0' && flag == 1)
 	{
 		if (line[i] != '1')
-			erfre(map, 2);
+		{
+			ft_putstr_fd("Error\n incorrect walls\n", 2);
+			free_map(map, 1);
+			exit(EXIT_FAILURE);
+		}
 		i++;
 	}
 	if (flag == 2)
 	{
 		if (line[0] != '1' || line[len - 2] != '1')
-			erfre(map, 2);
+		{
+			ft_putstr_fd("Error\n incorrect walls\n", 2);
+			free_map(map, 1);
+			exit(EXIT_FAILURE);
+		}
 	}
 	return (0);
 }

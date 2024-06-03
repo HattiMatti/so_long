@@ -43,9 +43,14 @@ int	map_fuctions(char *map_name, t_struct *map)
 	if (map->map == NULL)
 		erfre(map, 3);
 	map_line_read(map_name, map);
+	validate_map(map);
+	validate_counts(map);
+	init_visited(map);
+	floodfill(map, map->y, map->x);
+	check_visited(map);
 	while (i < map->map_height)
 	{
-		ft_printf("map: %s", map->map[i]);
+		ft_printf("%s", map->map[i]);
 		i++;
 	}
 	return (0);
@@ -58,7 +63,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr_fd("Error: Wrong number of arguments\n", 2);
+		ft_putstr_fd("Error\n Wrong number of arguments\n", 2);
 		return (0);
 	}
 	ft_memset(&map, 0, sizeof(map));
@@ -70,6 +75,7 @@ int	main(int argc, char **argv)
 		free_map(&map, 2);
 	free_textures(&map);
 	free_images(&map);
+	free_flood(&map);
 	mlx_terminate(map.mlx);
 	return (0);
 }

@@ -12,6 +12,16 @@
 
 #include "../includes/so_long.h"
 
+void	draw_floor(t_struct *map)
+{
+
+}
+
+void	draw_walls(t_struct *map)
+{
+
+}
+
 void	load_textures(t_struct *map)
 {
 	map->floor_texture = mlx_load_png("textures/floor.png");

@@ -78,7 +78,9 @@ void	free_map(t_struct *map, int flag)
 	if (map->map != NULL)
 	{
 		if (flag == 2)
+		{
 			map->lines = map->map_height;
+		}
 		while (map->map[i] != NULL && i < map->lines)
 		{
 			free(map->map[i]);
@@ -89,20 +91,42 @@ void	free_map(t_struct *map, int flag)
 	}
 }
 
+void	free_flood(t_struct *map)
+{
+	int	i;
+
+	i = 0;
+	if (map != NULL && map->visited != NULL)
+	{
+		while (map->visited[i] != NULL && i < map->map_height)
+		{
+			free(map->visited[i]);
+			i++;
+		}
+		free(map->visited);
+		map->visited = NULL;
+	}
+}
+
 void	erfre(t_struct *map, int flag)
 {
-	free_map(map, 1);
+	free_map(map, 2);
 	free_images(map);
 	free_textures(map);
+	free_flood(map);
 	if (flag == 1)
-		ft_putstr_fd("Error: error opening map\n", 2);
+		ft_putstr_fd("Error\n error opening map\n", 2);
 	else if (map->map_height == 0)
-		ft_putstr_fd("Error: map not valid\n", 2);
-	else if (flag == 2)
-		ft_putstr_fd("Error: incorrect walls\n", 2);
+		ft_putstr_fd("Error\n map not valid\n", 2);
 	else if (flag == 3)
-		ft_putstr_fd("Error: error allocating map\n", 2);
+		ft_putstr_fd("Error\n error allocating map\n", 2);
 	else if (flag == 4)
-		ft_putstr_fd("Error: MLX\n", 2);
+		ft_putstr_fd("Error\n error in MLX\n", 2);
+	else if (flag == 5)
+		ft_putstr_fd("Error\n player or exit incorrect\n", 2);
+	else if (flag == 6)
+		ft_putstr_fd("Error\n Wrong character in map\n", 2);
+	else if (flag == 7)
+		ft_putstr_fd("Error\n Player can't reach collectibles and exit\n", 2);
 	exit(EXIT_FAILURE);
 }

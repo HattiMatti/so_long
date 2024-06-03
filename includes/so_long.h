@@ -23,7 +23,11 @@ typedef struct s_struct
 	int				lines;
 	int				x;
 	int				y;
+	int				collectible;
+	int				player;
+	int				exit;
 	char			**map;
+	char			**visited;
 	mlx_t			*mlx;
 	mlx_image_t		*floor_img;
 	mlx_image_t		*wall_img;
@@ -42,11 +46,18 @@ int		map_line_read(char *map_name, t_struct *map);
 int		check_map_name(char *map_name);
 int		check_map(char *map_name, t_struct *map);
 int		llen_match(char *line, int len);
+int		validate_counts(t_struct *map);
 void	erfre(t_struct *map, int flag);
 void	free_map(t_struct *map, int flag);
 void	texture_to_img(t_struct	*map);
 void	load_textures(t_struct *map);
 void	free_textures(t_struct *map);
 void	free_images(t_struct *map);
+void	free_visited(t_struct *map, int count);
+void	init_visited(t_struct *map);
+void	floodfill(t_struct *map, int y, int x);
+void	validate_map(t_struct *map);
+void	free_flood(t_struct *map);
+void	check_visited(t_struct *map);
 
 #endif
