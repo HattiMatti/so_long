@@ -59,5 +59,7 @@ void	floodfill(t_struct *map, int y, int x);
 void	validate_map(t_struct *map);
 void	free_flood(t_struct *map);
 void	check_visited(t_struct *map);
+void	draw_floor(t_struct *map);
+void	draw_walls(t_struct *map);
 
 #endif

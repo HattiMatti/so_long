@@ -19,7 +19,7 @@ void	init_window(t_struct *map)
 	int	scr_width;
 	int	scr_height;
 
-	width = 50 * map->map_width;
+	width = 50 * (map->map_width - 1);
 	height = 50 * map->map_height;
 	map->mlx = mlx_init(width, height, "so_long", false);
 	if (!map->mlx)
@@ -29,6 +29,8 @@ void	init_window(t_struct *map)
 		erfre(map, 4);
 	load_textures(map);
 	texture_to_img(map);
+	draw_floor(map);
+	draw_walls(map);
 	mlx_loop(map->mlx);
 }
 

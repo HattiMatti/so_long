@@ -123,7 +123,7 @@ void	erfre(t_struct *map, int flag)
 	else if (flag == 4)
 		ft_putstr_fd("Error\n error in MLX\n", 2);
 	else if (flag == 5)
-		ft_putstr_fd("Error\n player or exit incorrect\n", 2);
+		ft_putstr_fd("Error\n player, exit or collectible incorrect\n", 2);
 	else if (flag == 6)
 		ft_putstr_fd("Error\n Wrong character in map\n", 2);
 	else if (flag == 7)

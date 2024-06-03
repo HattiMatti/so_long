@@ -63,7 +63,6 @@ void	floodfill(t_struct *map, int y, int x)
 		|| map->visited[y][x] == '1')
 		return ;
 	map->visited[y][x] = '1';
-	ft_printf("(%d, %d)\n", y, x);
 	if (map->map[y][x + 1] == '0' || map->map[y][x + 1] == 'C'
 		|| map->map[y][x + 1] == 'E')
 		floodfill(map, y, x + 1);
