@@ -12,6 +12,59 @@
 
 #include "../includes/so_long.h"
 
+void	move_counter(t_struct *map, int key)
+{
+	if (key == 1 && map->map[map->y - 1][map->x] != '1')
+	{
+		ft_printf("Move count: %d\n", map->moves++);
+		map->y -= 1;
+		map->player_img->instances[0].y -= 50;
+	}
+	if (key == 2 && map->map[map->y][map->x - 1] != '1')
+	{
+		ft_printf("Move count: %d\n", map->moves++);
+		map->x -= 1;
+		map->player_img->instances[0].x -= 50;
+	}
+	if (key == 3 && map->map[map->y + 1][map->x] != '1')
+	{
+		ft_printf("Move count: %d\n", map->moves++);
+		map->y += 1;
+		map->player_img->instances[0].y += 50;
+	}
+	if (key == 4 && map->map[map->y][map->x + 1] != '1')
+	{
+		ft_printf("Move count: %d\n", map->moves++);
+		map->x += 1;
+		map->player_img->instances[0].x += 50;
+	}
+}
+
+void	my_key_hook(mlx_key_data_t keydata, void *param)
+{
+	t_struct	*map;
+
+	map = param;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		mlx_close_window(map->mlx);
+	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
+	{
+		move_counter(map, 1);
+	}
+	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
+	{
+		move_counter(map, 2);
+	}
+	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+	{
+		move_counter(map, 3);
+	}
+	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
+	{
+		move_counter(map, 4);
+	}
+}
+
 void	init_window(t_struct *map)
 {
 	int	width;
@@ -26,11 +79,13 @@ void	init_window(t_struct *map)
 		erfre(map, 4);
 	mlx_get_monitor_size(0, &scr_width, &scr_height);
 	if (scr_width < width || scr_height < height)
-		erfre(map, 4);
+		erfre(map, 8);
 	load_textures(map);
 	texture_to_img(map);
 	draw_floor(map);
 	draw_walls(map);
+	map->moves = 1;
+	mlx_key_hook(map->mlx, my_key_hook, map);
 	mlx_loop(map->mlx);
 }
 

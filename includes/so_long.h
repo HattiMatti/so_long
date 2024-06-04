@@ -21,6 +21,7 @@ typedef struct s_struct
 	int				map_width;
 	int				map_height;
 	int				lines;
+	int				moves;
 	int				x;
 	int				y;
 	int				collectible;

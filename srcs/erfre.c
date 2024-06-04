@@ -121,12 +121,14 @@ void	erfre(t_struct *map, int flag)
 	else if (flag == 3)
 		ft_putstr_fd("Error\n error allocating map\n", 2);
 	else if (flag == 4)
-		ft_putstr_fd("Error\n error in MLX\n", 2);
+		ft_putstr_fd((char *)mlx_strerror(mlx_errno), 2);
 	else if (flag == 5)
 		ft_putstr_fd("Error\n player, exit or collectible incorrect\n", 2);
 	else if (flag == 6)
 		ft_putstr_fd("Error\n Wrong character in map\n", 2);
 	else if (flag == 7)
 		ft_putstr_fd("Error\n Player can't reach collectibles and exit\n", 2);
+	else if (flag == 8)
+		ft_putstr_fd("Error\n map too large\n", 2);
 	exit(EXIT_FAILURE);
 }

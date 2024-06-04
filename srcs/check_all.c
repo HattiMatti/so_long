@@ -52,3 +52,16 @@ int	validate_counts(t_struct *map)
 		return (1);
 	}
 }
+
+void	get_paid(t_struct *map)
+{
+	int	i;
+
+	i = 0;
+	if (map->map[map->y][map->x] == 'C')
+	{
+		while(map->collectible > 0)
+		{
+		}
+	}
+}
