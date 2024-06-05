@@ -60,8 +60,25 @@ void	get_paid(t_struct *map)
 	i = 0;
 	if (map->map[map->y][map->x] == 'C')
 	{
-		while(map->collectible > 0)
+		while (map->collectible > 0)
 		{
+			if ((map->collectible_img->instances[i].x / 50 == map->x)
+				&& (map->collectible_img->instances[i].y / 50 == map->y))
+			{
+				if (map->collectible_img->instances[i].enabled == true)
+				{
+					map->collectible--;
+					map->collectible_img->instances[i].enabled = false;
+				}
+				break ;
+			}
+			i++;
 		}
 	}
+}
+
+void	win_if_collected(t_struct *map)
+{
+	if (map->collectible == 0 && map->map[map->y][map->x] == 'E')
+		mlx_close_window(map->mlx);
 }

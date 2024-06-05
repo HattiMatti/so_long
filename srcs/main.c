@@ -16,25 +16,25 @@ void	move_counter(t_struct *map, int key)
 {
 	if (key == 1 && map->map[map->y - 1][map->x] != '1')
 	{
-		ft_printf("Move count: %d\n", map->moves++);
+		ft_printf("number of movements: %d\n", map->moves++);
 		map->y -= 1;
 		map->player_img->instances[0].y -= 50;
 	}
 	if (key == 2 && map->map[map->y][map->x - 1] != '1')
 	{
-		ft_printf("Move count: %d\n", map->moves++);
+		ft_printf("number of movements: %d\n", map->moves++);
 		map->x -= 1;
 		map->player_img->instances[0].x -= 50;
 	}
 	if (key == 3 && map->map[map->y + 1][map->x] != '1')
 	{
-		ft_printf("Move count: %d\n", map->moves++);
+		ft_printf("number of movements: %d\n", map->moves++);
 		map->y += 1;
 		map->player_img->instances[0].y += 50;
 	}
 	if (key == 4 && map->map[map->y][map->x + 1] != '1')
 	{
-		ft_printf("Move count: %d\n", map->moves++);
+		ft_printf("number of movements: %d\n", map->moves++);
 		map->x += 1;
 		map->player_img->instances[0].x += 50;
 	}
@@ -63,6 +63,8 @@ void	my_key_hook(mlx_key_data_t keydata, void *param)
 	{
 		move_counter(map, 4);
 	}
+	get_paid(map);
+	win_if_collected(map);
 }
 
 void	init_window(t_struct *map)
@@ -91,9 +93,6 @@ void	init_window(t_struct *map)
 
 int	map_fuctions(char *map_name, t_struct *map)
 {
-	int	i;
-
-	i = 0;
 	check_map_name(map_name);
 	check_map(map_name, map);
 	map->map = malloc((map->map_height + 1) * sizeof(char *));
@@ -105,11 +104,6 @@ int	map_fuctions(char *map_name, t_struct *map)
 	init_visited(map);
 	floodfill(map, map->y, map->x);
 	check_visited(map);
-	while (i < map->map_height)
-	{
-		ft_printf("%s", map->map[i]);
-		i++;
-	}
 	return (0);
 }
 
@@ -126,7 +120,6 @@ int	main(int argc, char **argv)
 	ft_memset(&map, 0, sizeof(map));
 	map_name = argv[1];
 	map_fuctions(map_name, &map);
-	ft_printf("width: %d height: %d\n", map.map_width, map.map_height);
 	init_window(&map);
 	if (map.map != NULL)
 		free_map(&map, 2);

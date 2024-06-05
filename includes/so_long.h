@@ -62,5 +62,7 @@ void	free_flood(t_struct *map);
 void	check_visited(t_struct *map);
 void	draw_floor(t_struct *map);
 void	draw_walls(t_struct *map);
+void	get_paid(t_struct *map);
+void	win_if_collected(t_struct *map);
 
 #endif

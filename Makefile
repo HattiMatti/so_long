@@ -45,7 +45,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(MAKE) -C $(LIBFT)
 	@cmake MLX42 -B ./MLX42/build && $(MAKE) -C MLX42/build -j4
-	$(COMPILE) $(OBJ) $(MLX42) -L$(LIBFT) -lft -o $(NAME) 
+	$(COMPILE) $(CFLAGS) $(OBJ) $(MLX42) -L$(LIBFT) -lft -o $(NAME) 
 
 clean :
 	rm -f $(OBJ)
