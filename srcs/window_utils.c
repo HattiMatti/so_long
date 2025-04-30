@@ -70,19 +70,34 @@ void	load_textures(t_struct *map)
 {
 	map->floor_texture = mlx_load_png("textures/floor.png");
 	if (!map->floor_texture)
+	{
+		ft_printf("Failed to load textures/floor.png\n");
 		erfre(map, 4);
+	}
 	map->wall_texture = mlx_load_png("textures/wall.png");
 	if (!map->wall_texture)
+	{
+		ft_printf("Failed to load textures/wall.png\n");
 		erfre(map, 4);
+	}
 	map->collectible_texture = mlx_load_png("textures/collectible.png");
 	if (!map->collectible_texture)
+	{
+		ft_printf("Failed to load textures/collectible.png\n");
 		erfre(map, 4);
+	}
 	map->player_texture = mlx_load_png("textures/player.png");
 	if (!map->player_texture)
+	{
+		ft_printf("Failed to load textures/player.png\n");
 		erfre(map, 4);
+	}
 	map->exit_texture = mlx_load_png("textures/exit.png");
 	if (!map->exit_texture)
+	{
+		ft_printf("Failed to load textures/exit.png\n");
 		erfre(map, 4);
+	}
 }
 
 void	texture_to_img(t_struct	*map)

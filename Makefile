@@ -39,6 +39,12 @@ COMPILE = cc $(INCLUDES)
 
 all : $(NAME)
 
+build_mlx : 
+	git clone https://github.com/codam-coding-college/MLX42.git
+	cd MLX42
+	cmake -B build
+	cmake --build build -j4
+
 %.o : %.c
 	$(COMPILE) -c $< -o $@
 	
