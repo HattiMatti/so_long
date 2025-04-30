@@ -39,25 +39,24 @@ COMPILE = cc $(INCLUDES)
 
 all : $(NAME)
 
-build_mlx : 
-	git clone https://github.com/codam-coding-college/MLX42.git
-	cd MLX42
-	cmake -B build
-	cmake --build build -j4
-
 %.o : %.c
 	$(COMPILE) -c $< -o $@
 	
 $(NAME) : $(OBJ)
 	$(MAKE) -C $(LIBFT)
-	@cmake MLX42 -B ./MLX42/build && $(MAKE) -C MLX42/build -j4
-	$(COMPILE) $(CFLAGS) $(OBJ) $(MLX42) -L$(LIBFT) -lft -o $(NAME) 
+	$(COMPILE) $(CFLAGS) $(OBJ) $(MLX42) -L$(LIBFT) -lft -o $(NAME)
+
+mlx_build :
+	echo "Building MLX42...";
+	cmake -S MLX42 -B MLX42/build && $(MAKE) -C MLX42/build -j4;
+
+mlx_get :
+	git clone https://github.com/codam-coding-college/MLX42.git
 
 clean :
 	rm -f $(OBJ)
 	$(MAKE) -C $(LIBFT) clean
 	
-
 fclean : clean
 	rm -f $(NAME)
 	$(MAKE) -C $(LIBFT) fclean
